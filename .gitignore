@@ -1,3 +1,17 @@
-node_modules
+# Cloudflare Wrangler config
+wrangler.toml
+wrangler.json
+wrangler.jsonc
+
+# Environment / secrets
+.env
 .dev.vars
-.wrangler
+*.pem
+
+# Node dependencies
+node_modules/
+dist/
+
+# Logs / local test data
+*.log
+*.gz

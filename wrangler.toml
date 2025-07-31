@@ -1,5 +1,8 @@
-name = "matched-data-worker"
+name = "waf-payload-decoder"
 main = "./src/index.ts"
-compatibility_date = "2024-05-07"
-account_id = "ACCOUNTID"
-route = "SUBDOMAIN.DOMAIN/logs*"
+compatibility_date = "2025-07-30"
+account_id = "2d4a0681682a0636adb204232e94b6f0"
+
+[[r2_buckets]]
+binding = "WAF_LOGS_BUCKET"
+bucket_name = "cloudflare-managed-9ce07808"
