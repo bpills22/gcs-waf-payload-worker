@@ -144,7 +144,7 @@ router.put("/logs/:logdata+", async (req: IRequest, env: Env) => {
   if (enriched.length > 0) {
     const dateFolder = new Date().toISOString().split("T")[0];
     const filename = `waf-logs/${dateFolder}/${Date.now()}.json`;
-    const bucketName = "waflz-logs"; // Your GCS bucket
+    const bucketName = "waflz-logs"; // CHANGE THIS TO YOUR GCS BUCKET NAME
 
     const accessToken = await getGcsAccessToken(env.GCS_SERVICE_ACCOUNT_KEY);
 
