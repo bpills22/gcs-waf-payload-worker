@@ -4,8 +4,8 @@ import { decode } from "./matched_data";
 import { inflate } from "pako"; // gzip inflate
 
 type Env = {
-  MATCHED_PAYLOAD_PRIVATE_KEY: string; // Managed ruleset key
-  OWASP_PRIVATE_KEY: string; // OWASP ruleset key
+  MATCHED_PAYLOAD_PRIVATE_KEY: string; // Cloudflare Managed ruleset Priv key
+  OWASP_PRIVATE_KEY: string; // OWASP Managed Ruleset Priv key
   GCS_SERVICE_ACCOUNT_KEY: string; // JSON for service account key
 };
 
