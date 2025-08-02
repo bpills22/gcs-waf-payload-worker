@@ -88,7 +88,7 @@ compatibility_date = "2025-08-01"
 
 ```
 
-Replace `BUCKET_NAME` with your GCS bucket name.
+In Line 147, replace the `bucketName` var with your GCS bucket name.
 
 ### 6. Deploy the Worker
 
