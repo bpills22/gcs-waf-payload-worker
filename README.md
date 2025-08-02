@@ -21,7 +21,7 @@ This Worker performs the following operations:
 - **Wrangler CLI** installed
 
 ```bash
-npm install -g wrangler
+npm i -D wrangler@latest
 ```
 
 ## Setup Instructions
@@ -45,8 +45,7 @@ npm install
    - **IAM & Admin** → **Service Accounts** → **Create Service Account**
 2. Grant the following role:
    - **Storage Object Creator**
-3. Create a JSON key and download it to your computer
-4. **Important:** Do not commit this JSON file to GitHub. Ensure `.gitignore` includes it.
+3. Create a JSON key and download it to your computer.
 
 ### 4. Configure Worker Secrets
 
@@ -87,8 +86,6 @@ name = "gcs-waf-payload-decoder"
 main = "src/index.ts"
 compatibility_date = "2025-08-01"
 
-[vars]
-BUCKET_NAME = "waflz-logs"
 ```
 
 Replace `BUCKET_NAME` with your GCS bucket name.
@@ -99,7 +96,7 @@ Replace `BUCKET_NAME` with your GCS bucket name.
 npx wrangler deploy
 ```
 
-### 7. Add a Route and Custom Domain (Optional)
+### 7. Add a Route and Custom Domain (Recommended)
 
 In the Cloudflare dashboard:
 
@@ -112,7 +109,7 @@ In the Cloudflare dashboard:
 
 ## Testing
 
-A test route `/gcs-test` is included to confirm GCS connectivity.
+A test route `/gcs-test` is included to confirm GCS connectivity and authenticated token.
 
 ```bash
 curl "https://<your-worker-domain>/gcs-test"
@@ -128,7 +125,7 @@ curl "https://<your-worker-domain>/gcs-test"
 1. In the Cloudflare Dashboard, go to your zone:
    - **Analytics & Logs** → **Logpush** → **S3 Compatible**
 2. Create a job:
-   - **Destination:** HTTPS (point to your Worker URL, e.g., `https://gcs-waflz.example.com/logs`)
+   - **Destination:**  the bucket name is the subdomain of your Worker custom domain, e.g. `gcs-waflz`. Use `/logs` for the path and set the `Endpoint URL` to your apex zone or domain, e.g. `example.com`
    - **Dataset:** Firewall Events (WAF)
    
 3. Enable the job
@@ -166,7 +163,6 @@ In the GCS console:
 - Never commit your private keys or GCS service account JSON to GitHub
 - Always use Wrangler secrets for sensitive values
 - Ensure your GCS bucket is private and properly configured
-- Regularly rotate your service account keys and private keys
 
 ## License
 
