@@ -14,4 +14,4 @@ dist/
 
 # Logs / local test data
 *.log
-*.gz
+*.json
